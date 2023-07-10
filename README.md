@@ -1,2 +1,4 @@
 # LearningPython
-My Journey Python learning from scratch
+My Journey of Python Learning from scratch
+
+#GoogleITAutomation Course from #Coursera
