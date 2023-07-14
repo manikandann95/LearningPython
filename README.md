@@ -160,3 +160,20 @@ print("+" + 10 * "-" + "+") #
 print(("|" + " " * 10 + "|\n") * 5, end = "")
 print("+" + 10 * "-" + "+")
 ```
+**Elif condition:**
+    If condition1 is True:
+
+        Then perform action1 and exit if-elif-else block
+
+    If condition2 is True:
+
+        Then perform action2 and exit if-elif-else block
+
+    If neither condition1 nor condition2 are True:
+
+        Then perform action3 and exit if-elif-else block
+
+# Evaluate the Boolean output of this comparison
+```Python
+print((5 >= 2*4) and (5 <= 4*3))
+```
