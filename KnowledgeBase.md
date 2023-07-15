@@ -1,29 +1,35 @@
-# Numeric variables - hold integers and decimal values
+**Rules for Python variable names**
+
+A variable name can only contain alpha-numeric characters and underscores (ie. A-Z, a-z, 0-9, and _ ).
+A variable name cannot start with a number.
+Variable names are case-sensitive (age, Age and AGE are three different variables).
+
+**Numeric variables - hold integers and decimal values**
 age = 25
 temperature = 98.6
 
-# String variables - Stores a sequence of characters enclosed in single or double quotes
+**String variables - Stores a sequence of characters enclosed in single or double quotes**
 name = "John Doe"
 message = 'Hello, world!'
 
-# Boolean variables - only hold the values true and false
+**Boolean variables - only hold the values true and false**
 is_true = True
 is_false = False
 
-# List variables - Stores a collection of items, which can be of different types.
+**List variables - Stores a collection of items, which can be of different types.**
 numbers = [1, 2, 3, 4, 5]
 fruits = ['apple', 'banana', 'orange']
 
-# Tuple variables
+**Tuple variables**
 coordinates = (10, 20)
 
-# Dictionary variables
+**Dictionary variables**
 person = {'name': 'Alice', 'age': 30}
 
-# Set variables
+**Set variables**
 unique_numbers = {1, 2, 3}
 
-# None variable
+**None variable**
 empty_value = None
     
     The purpose of the **def()** keyword is to define a new function. 
