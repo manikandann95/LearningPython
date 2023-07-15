@@ -135,3 +135,25 @@ numbers = [1, 2, 3, 4, 5, 6]
 n = list(filter(lambda x : x % 2 == 0 , numbers))
 print(n)
 ```
+**Avoid Infinite Loops and not initializing variables.**
+
+Example of Infinite loop: while loop doesn't change because condition never met. Pay close attention to your variables and what possible values they can take. Think about unexpected values, like zero.
+
+**Common Errors in while Loops**
+
+If you get an error message on a loop or it appears to hang, your debugging checklist should include the following checks:
+
+    **Failure to initialize variables**. Make sure all the variables used in the loop’s condition are initialized before the loop.
+
+   ** Unintended infinite loops.** Make sure that the body of the loop modifies the variables used in the condition, so that the loop will eventually end for all possible values of the variables. You can often prevent an infinite loop by using the break keyword or by adding end criteria to the condition part of the while loop.
+
+ 
+**while Loop Terms**
+
+    **while loop** - Tells the computer to execute a set of instructions while a specified condition is True. In other words, while loops keep executing the same group of instructions until the condition becomes False.
+
+    **infinite loop** - Missing a method for exiting the loop, causing the loop to run forever.
+
+    **break** - A keyword that can be used to end a loop at a specific point. 
+    **continue** - A keyword used to skip an iteration in the loop at a specific case.
+
