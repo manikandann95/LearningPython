@@ -157,3 +157,10 @@ If you get an error message on a loop or it appears to hang, your debugging chec
     **break** - A keyword that can be used to end a loop at a specific point. 
     **continue** - A keyword used to skip an iteration in the loop at a specific case.
 
+Try to recall how Python interprets the truth of a condition, and note that these two forms are equivalent:
+
+while number != 0: and while number:.
+
+The condition that checks if a number is odd can be coded in these equivalent forms, too:
+
+if number % 2 == 1: and if number % 2:.
