@@ -194,8 +194,59 @@ class ClassName:
     def method_name(self, other_parameters):
         """Documentation for the method."""
         body_of_method
+
         
 def function_name(parameters):
     """Documentation for the function."""
     body_of_function
 '''
+Class Functions are Object Methods.
+
+The **self** parameter is a reference to the current instance of the class, and is used to access variables that belong to the class.
+It does not have to be named self , you can call it whatever you like, but it has to be the first parameter of any function in the class:
+```Python
+class Person:
+  def __init__(mysillyobject, name, age):
+    mysillyobject.name = name
+    mysillyobject.age = age
+
+  def myfunc(abc):
+    print("Hello my name is " + abc.name)
+
+p1 = Person("John", 36)
+p1.myfunc()
+```
+**Inheritance : is a relationship**
+Apple is a fruit (Class Inheritance : Fruit class - Ancestor/ Parent Class and Apple is a Sibling Class)
+Package class - Repository class
+"Always initialize mutable attributes **in the constructor**"
+![image](https://github.com/manikandann95/LearningPython/assets/24749083/415b59dd-2212-4d09-b15e-5b880f012b5e)
+
+**Composition : has a relationship**
+![image](https://github.com/manikandann95/LearningPython/assets/24749083/b15e5dfa-f9c6-460a-b096-5f7f329d4d37)
+
+Classes that contain objects of other classes are usually referred to as composites, where classes that are used to create more complex types are referred to as components.
+
+For example, your Horse class can be composed by another object of type Tail. Composition allows you to express that relationship by saying a Horse has a Tail.
+
+Composition enables you to reuse code by adding objects to other objects, as opposed to inheriting the interface and implementation of other classes. Both Horse and Dog classes can leverage the functionality of Tail through composition without deriving one class from the other.
+
+Use the super() Function
+Python also has a super() function that will make the child class inherit all the methods and properties from its parent:
+```Python
+class Student(Person):
+  def __init__(self, fname, lname):
+    super().__init__(fname, lname)
+```
+
+The child's __init__() function overrides the inheritance of the parent's __init__() function.
+For that add a call to the parent's __init__() function:
+
+```Python
+class Student(Person):
+  def __init__(self, fname, lname):
+    Person.__init__(self, fname, lname)
+```
+class Student(Person):
+  def __init__(self, fname, lname):
+    super().__init__(fname, lname)
