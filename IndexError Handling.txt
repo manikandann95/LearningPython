@@ -1,0 +1,14 @@
+x = [5,8,9,13]
+n = int(input("Enter Index : "))
+
+def find_nth_value(x,n):
+    try:
+        result = x[n]
+    except IndexError as err:
+        print(err)
+        n = int(input("Enter Index : "))
+        find_nth_value(x,n)
+    else:
+        print("Your answer is ", result)
+
+find_nth_value(x,n)

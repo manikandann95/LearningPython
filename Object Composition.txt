@@ -1,0 +1,94 @@
+```Python
+class Clothing:
+  stock={ 'name': [],'material' :[], 'amount':[]}
+  def __init__(self,name):
+    material = ""
+    self.name = name
+  def add_item(self, name, material, amount):
+    Clothing.stock['name'].append(self.name)
+    Clothing.stock['material'].append(self.material)
+    Clothing.stock['amount'].append(amount)
+  def Stock_by_Material(self, material):
+    count=0
+    n=0
+    for item in Clothing.stock['material']:
+      if item == material:
+        count += Clothing.stock['amount'][n]
+        n+=1
+    return count
+
+class shirt(Clothing):
+  material="Cotton"
+class pants(Clothing):
+  material="Cotton"
+  
+polo = shirt("Polo")
+sweatpants = pants("Sweatpants")
+polo.add_item(polo.name, polo.material, 4)
+sweatpants.add_item(sweatpants.name, sweatpants.material, 6)
+current_stock = polo.Stock_by_Material("Cotton")
+print(current_stock)
+```
+
+Imagine you're building with LEGO blocks. You have different types of blocks, like squares, rectangles, and triangles. Each block has its own special use, but you can also combine them to create something bigger and more complex.
+
+In Python, objects are like those LEGO blocks. You can create different objects that have their own properties and behaviors. Object composition is when you create a new object by putting together other objects.
+
+In Python, we can create classes, which are like blueprints for objects. Object composition is when we use these classes to build more complex objects by putting together simpler objects.
+
+Let's take an example to understand this better:
+
+Imagine we're making a game, and we have two classes: Player and Weapon.
+
+Weapon Class: This class represents a weapon that a player can use. A weapon has a name and a damage value.
+
+```Python
+class Player:
+    def __init__(self, name, weapon):
+        self.name = name
+        self.weapon = weapon
+
+    def attack(self):
+        print(f"{self.name} attacks using {self.weapon.name}!")
+
+class Weapon:
+    def __init__(self, name, damage):
+        self.name = name
+        self.damage = damage
+
+# Create a weapon
+sword = Weapon("Sword", 10) 
+
+# Create a player and give them the weapon
+player = Player("Hero", sword) # Passing Class as Parameter (Attribute) to another class
+
+# The player attacks using their weapon
+player.attack()
+```
+
+```Python
+# Class for the animal's body
+class Body:
+    def __init__(self, color):
+        self.color = color
+
+# Class for the animal's legs
+class Legs:
+    def __init__(self, num_legs):
+        self.num_legs = num_legs
+
+# Now, let's use these classes to create animals
+class Animal:
+    def __init__(self, body_color, num_legs):
+        self.body = Body(body_color) # Using another Class attribute in this class
+        self.legs = Legs(num_legs) # Using another Class attribute in this class
+
+# Let's create some animals
+dog = Animal("brown", 4)
+bird = Animal("blue", 2)
+
+# Accessing the properties of the animals
+print("Dog has", dog.body.color, "body and", dog.legs.num_legs, "legs.") # dog : Object of Animal, body.color : Animal Attribute - body but from Body class attribute color hence.
+print("Bird has", bird.body.color, "body and", bird.legs.num_legs, "legs.") # Bird : Object of Animal, legs.num_legs : Animal Attribute - legs but from Legs Class attribute num_legs hence. 
+```
+

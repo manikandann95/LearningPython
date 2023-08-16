@@ -1,0 +1,176 @@
+Python DateTime module
+
+Python Datetime module supplies classes to work with date and time. These classes provide a number of functions to deal with dates, times, and time intervals. Date and DateTime are an object in Python, so when you manipulate them, you are actually manipulating objects and not strings or timestamps. 
+
+The DateTime module is categorized into 6 main classes – 
+
+date – An idealized naive date, assuming the current Gregorian calendar always was, and always will be, in effect. Its attributes are year, month, and day.
+time – An idealized time, independent of any particular day, assuming that every day has exactly 24*60*60 seconds. Its attributes are hour, minute, second, microsecond, and tzinfo.
+datetime – Its a combination of date and time along with the attributes year, month, day, hour, minute, second, microsecond, and tzinfo.
+timedelta – A duration expressing the difference between two date, time, or datetime instances to microsecond resolution.
+tzinfo – It provides time zone information objects.
+timezone – A class that implements the tzinfo abstract base class as a fixed offset from the UTC (New in version 3.2).
+Python Date Class
+The date class is used to instantiate date objects in Python. When an object of this class is instantiated, it represents a date in the format YYYY-MM-DD. The constructor of this class needs three mandatory arguments year, month, and date.
+
+Python Date class Syntax
+class datetime.date(year, month, day)
+The arguments must be in the following range –  
+
+MINYEAR <= year <= MAXYEAR
+1 <= month <= 12
+1 <= day <= number of days in the given month and year
+Note – If the argument is not an integer it will raise a TypeError and if it is outside the range a ValueError will be raised. 
+
+Date object representing data in Python
+Initializing the constructor and passing arguments in the format year, month, and date.
+
+```Python
+
+
+# Python program to
+# demonstrate date class
+  
+# import the date class
+from datetime import date
+  
+my_date = date(1996, 12, 11)
+  
+print("Date passed as argument is", my_date)
+  
+# Uncommenting my_date = date(1996, 12, 39)
+# will raise an ValueError as it is
+# outside range
+  
+# uncommenting my_date = date('1996', 12, 11)
+# will raise a TypeError as a string is
+# passed instead of integer
+
+```
+
+Output:
+Date passed as argument is 1996-12-11
+Traceback (most recent call last):
+  File "/home/ccabfb570d9bd1dcd11dc4fe55fd6ba2.py", line 14, in 
+    my_date = date(1996, 12, 39)
+ValueError: day is out of range for month
+
+Traceback (most recent call last):
+  File "/home/53b974e10651f1853eee3c004b48c481.py", line 18, in 
+    my_date = date('1996', 12, 11)
+TypeError: an integer is required (got type str) 
+
+Date Class:
+
+List of Date Class Methods
+Function Name 	
+Description
+
+ctime()	Return a string representing the date
+fromisocalendar()	Returns a date corresponding to the ISO calendar
+fromisoformat()	Returns a date object from the string representation of the date
+fromordinal()	Returns a date object from the proleptic Gregorian ordinal, where January 1 of year 1 has ordinal 1
+fromtimestamp()	Returns a date object from the POSIX timestamp
+isocalendar()	Returns a tuple year, week, and weekday
+isoformat()	Returns the string representation of the date
+isoweekday()	Returns the day of the week as an integer where Monday is 1 and Sunday is 7
+replace()	Changes the value of the date object with the given parameter
+strftime()	Returns a string representation of the date with the given format
+timetuple()	Returns an object of type time.struct_time
+today()	Returns the current local date
+toordinal()	Return the proleptic Gregorian ordinal of the date, where January 1 of year 1 has ordinal 1
+weekday()	Returns the day of the week as integer where Monday is 0 and Sunday is 6
+
+strptime() is another method available in DateTime which is used to format the time stamp which is in string format to date-time object.
+
+Syntax: datetime.strptime(time_data, format_data)
+
+Parameter:
+
+time_data is the time present in string format
+format_data is the data present in datetime format which is converted from time_data using this function.
+How strptime() works?
+This function takes two arguments, a string in which some time is given and a format code, to change the string into, the string is changed to the DateTime object as per the list of codes given below.
+
+Format codes
+
+format code	meaning	example
+%a	Abbreviated weekday name			Sun, Mon
+%A	Full weekday name 				Sunday, Monday
+%w	Weekday as decimal number			0…6
+%d	Day of the month as a zero-padded decimal	01, 02
+%-d	day of the month as decimal number		1, 2..
+%b 	Abbreviated month name				Jan, Feb
+%m	month as a zero padded decimal number		01, 02
+%-m	month as a decimal number			1, 2
+%B 	Full month name	January, February
+%y	year without century as a zero padded decimal number	99, 00 
+%-y	year without century as a decimal number	0, 99
+%Y	year with century as a decimal number		2000, 1999
+%H	hour(24 hour clock) as a zero padded decimal number	01, 23
+%-H	hour(24 hour clock) as a decimal number			1, 23
+%I	hour(12 hour clock) as a zero padded decimal number	01, 12
+%-I	hour(12 hour clock) as a decimal number			1, 12
+%p	locale’s AM or PM					AM, PM
+%M	Minute as a zero padded decimal number			01, 59
+%-M	Minute as a decimal number				1, 59
+%S	Second as a zero padded decimal number			01, 59
+%-S	Second as a decimal number					1, 59
+%f	microsecond as a decimal number, zero padded on the left side	000000, 999999
+%z	UTC offset in the form +HHMM or -HHMM	 
+%Z	Time zone name	 
+%j	day of the year as a zero padded decimal number			001, 365
+%-j	day of the year as a decimal number				1, 365
+%U	Week number of the year (Sunday being the first)		0, 6
+%W	Week number of the year						00, 53
+%c	locale’s appropriate date and time representation		Mon Sep 30 07:06:05 2013
+%x	locale’s appropriate date representation			11/30/98
+%X	locale’s appropriate time representation			10:03:43
+%%	A literal ‘%’ character	%
+
+Example 1: Python program to read datetime and get all time data using strptime. Here we are going to take time data in the string format and going to extract hours, minutes, seconds, and milliseconds
+
+```Python
+# import datetime module from datetime
+from datetime import datetime
+ 
+# consider the time stamp in string format
+# DD/MM/YY H:M:S.micros
+time_data = "25/05/99 02:35:5.523"
+ 
+# format the string in the given format :
+# day/month/year hours/minutes/seconds-micro
+# seconds
+format_data = "%d/%m/%y %H:%M:%S.%f"
+ 
+# Using strptime with datetime we will format
+# string into datetime
+date = datetime.strptime(time_data, format_data)
+ 
+# display milli second
+print(date.microsecond)
+ 
+# display hour
+print(date.hour)
+ 
+# display minute
+print(date.minute)
+ 
+# display second
+print(date.second)
+ 
+# display date
+print(date)
+```
+
+Output:
+
+523000
+
+2
+
+35
+
+5
+
+1999-05-25 02:35:05.523000
