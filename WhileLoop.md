@@ -1,3 +1,5 @@
+The while and for loops can also have an else clause in Python. The else clause executes after the loop finishes its execution as long as it has not been terminated by **break**
+
 Listen to this story: a boy and his father, a computer programmer, are playing with wooden blocks. They are building a pyramid.
 Their pyramid is a bit weird, as it is actually a pyramid-shaped wall – it's flat. 
 The pyramid is stacked according to one simple principle: each lower layer contains one block more than the layer above.
