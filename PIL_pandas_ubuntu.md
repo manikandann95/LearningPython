@@ -5,7 +5,7 @@ The tradeoff is that interpreted languages generally run slower than the compile
 Lastly, C# and Java are mixed up, In this first code get compiled to intermediate code. 
 This can run in different OS, the execute code based on OS-specific JVM for Java and common language runtime for C#.
 
-Interpreted Language : 
+Interpreted Language: 
 
 PIL - Python Image Library for Image processing in python
 
@@ -16,12 +16,25 @@ Pillow remains a vital tool for understanding and dealing with images.
 in terminal (sudo apt install python3-pip)
 PIP - Package Installer for Python
 
+**SYNTAXes : shutil.disk_usage(path) ,   psutil.cpu_percent(interval)  in seconds,  pandas.DataFrame(data, index)**
+
 in python terminal :
 ```Python
 import PIL.Image # Imported sub-module Image from PIL
 image = PIL.Image.open("houses.jpg") # opening image: /usr/lib/python3/dist-packages/PIL/Image.py 
 print(image.size) # Displays Attribute (size) of an image : (4032,3024)
 print(image.format) # Image format : JPEG
+```
+**PIL Image Rotation in Windows**
+```Python
+from PIL import Image  
+#Open image using Image module  
+im = Image.open(r"C:\Users\Manik\Downloads\car.jpg")  
+#Show actual Image  
+im.show()  
+#Show rotated Image  
+imim = im.rotate(45)  # Rotates 45 degree clockwise
+im.show()
 ```
 
 pandas library for Data Science
@@ -50,7 +63,7 @@ Fri      2345      76
 
 Usually in Linux/ Mac Pipeline Interpreter is named before the filename (python3 Hello_world.py)
 
-If you don't want to use an interpreter every time, you can add (shebang - #!) with Interpreter location in the first line of the code and make sure give permission to execute file
+If you don't want to use an interpreter every time, you can add (**shebang - #!**) with Interpreter location in the first line of the code and make sure give permission to execute file
 chmod +x clas.py
 ./clas.py 
 Open file just like all executable file
@@ -65,4 +78,3 @@ print(df)
 df["Errors"].mean()
 
 ```
-
