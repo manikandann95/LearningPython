@@ -65,4 +65,43 @@ print(re.search(r'[^a-zA-Z ]','This is a sentence with spaces.')) # O/P: <re.Mat
 
 print(re.search(r'[dog|cat]','I like dogs.')) # O/P: <re.Match object; span=(7, 10), match='dog'>
 print(re.search(r'[dog|cat]','I like both cats and dogs.')) # O/P: <re.Match object; span=(12, 15), match='cat'>
+print(re.findall(r'[dog|cat]','I like both cats and dogs')) # O/P: ['dog', 'cat'] # findall finds all the given substring
+
+```
+re.findall - finds all the given substrings
+#------------------------------------------------------------------------------------------
+How to match a certain character / Substring or string / sentence **Several Times**
+Eg: We Need to find the longest word in the string / Find the hostnames in the log, 
+
+for that we use **Repeated Matches**  : ".*" dot followed by star rather than single dot
+
+This means It matches any character **repeated as many times as possible including Zero**
+
+```Python
+import re
+print(re.search(r'Py.*n','Pygmalion')) # O/P: <re.Match object; span=(0,9), match='Pygmalion'>
+print(re.search(r'Py.*n','Python Programming')) # O/P: <re.Match object; span=(0,17), match='Python Programmin'> # It takes last 'n' in the given string, bcz Star takes many characters as possible
+
+#This **Star** qualifier behaviour is called **GREEDY**
+# Program to check atleast 2 a is present either lower or upper case
+import re
+def repeating_letter_a(text):
+  result = re.search(r"[Aa].*[Aa]", text)
+  return result != None
+
+print(repeating_letter_a("banana")) # True
+print(repeating_letter_a("pineapple")) # False
+print(repeating_letter_a("Animal Kingdom")) # True
+print(repeating_letter_a("A is for apple")) # True
+
+print(re.search(r'Py[a-z]*n','Python Programming')) # O/P: <re.Match object; span=(0, 6), match='Python'> bcz it won't take other than small alphabets in between
+print(re.search(r'Py[a-z]*n','Pyn')) # O/P: <re.Match object; span=(0, 3), match='Pyn'> # Remember Unlike dot, star qualifier can have Zero characters too. 
+```
+Other than dot (.), star (*), it can take Plus (+), Question mark (?) that help to create complex expressions
+
+```Python
+import re
+print(re.search(r'o+l+','goldfish') # <re.Match object; span=(1,3), match='ol'>
+print(re.search(r'o+l+','woolly') # <re.Match object; span=(1,5), match='ooll'> # Same query gives as many o l presents concurrently
+print(re.search(r'o+l+','boiling')) # None bvcz its not concurrent
 ```
