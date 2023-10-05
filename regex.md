@@ -97,11 +97,18 @@ print(repeating_letter_a("A is for apple")) # True
 print(re.search(r'Py[a-z]*n','Python Programming')) # O/P: <re.Match object; span=(0, 6), match='Python'> bcz it won't take other than small alphabets in between
 print(re.search(r'Py[a-z]*n','Pyn')) # O/P: <re.Match object; span=(0, 3), match='Pyn'> # Remember Unlike dot, star qualifier can have Zero characters too. 
 ```
-Other than dot (.), star (*), it can take Plus (+), Question mark (?) that help to create complex expressions
-
+Other than dot (.), star (*), it can take Plus (+), Question mark (?) that help to create complex expressions like "egrep" command
++ is for multiple times match, ? Zero match also taken into count
+\ is for escape character (\. \* \+ \? \$ \^ inside search) Eg: re.search(r'\.com','mydomain.com')
 ```Python
 import re
+# +
 print(re.search(r'o+l+','goldfish') # <re.Match object; span=(1,3), match='ol'>
 print(re.search(r'o+l+','woolly') # <re.Match object; span=(1,5), match='ooll'> # Same query gives as many o l presents concurrently
-print(re.search(r'o+l+','boiling')) # None bvcz its not concurrent
+print(re.search(r'o+l+','boiling')) # None (bvcz its not concurrent)
+# ?
+print(re.search(r'p?each','each of us on our own')) # <re.Match object; span=(0,3), match='each'>
+print(re.search(r'p?each','I like peaches')) # <re.Match object; span=(7,12), match='peach'>
+```
+
 ```
