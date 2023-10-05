@@ -5,11 +5,11 @@ re module in python
 ```Python
 import re
 result = re.search(r'aza','plaza') # r indicates its a RawString
-#Always use RawStrings for regex in python
+#Always use RawStrings for regex in Python
 print(result) # O/P: <re.Match object; span=(2,5), match='aza'> - our aza matches in span 2,5 in the given string
 result = re.search(r'aza','bazaar') # r indicates its a RawString
 print(result) # O/P: <re.match; span=(1,4), match='aza'> - our aza matches in span 1,4 in the given string i.e. result[1:4]
-result = re.search(r'aza','maze') # O/P : None (since that substring is not match in given string)
+result = re.search(r'aza','maze') # O/P: None (since that substring does not match in the given string)
 print(result)
 result = re.search(r'x','xerox')
 print(result) # O/P : <re.match; span=(0,1), match='x'>
@@ -25,10 +25,10 @@ def check_aei (text):
   return result != None
 
 print(check_aei("academia")) # True
-print(check_aei("aerial")) # False (because exactly one gap in between each vowel need to be true in the same order aei)
+print(check_aei("aerial")) # False (because exactly one gap in between each vowel needs to be true in the same order aei)
 print(check_aei("paraMEDIC")) # True
 ```
-Character Classes : Inside Square brackets insert both letters to check if thats a match
+Character Classes: Inside Square brackets insert both letters to check if they match
 
 ```Python
 import re
@@ -36,7 +36,7 @@ import re
 print(re.search(r'[Pp]ython', 'Python')) # O/P: <re.Match object; span=(0, 6), match='Python'>
 
 print(re.search(r'[a-z]way', 'The end of the Highway')) # O/P: <re.Match object; span=(18,22), match='hway'>
-# Ranges we can use are : A-Z a-z 0-9
+# Ranges we can use are: A-Z a-z 0-9
 print(re.search(r'cloud[a-zA-Z0-9]','cloudy weather')) # O/P: <re.Match object; span=(0, 6), match='cloudy'>
 print(re.search(r'cloud[a-zA-Z0-9]','cloud9 cinemas')) # O/P: <re.Match object; span=(0, 6), match='cloud9'>
 
@@ -61,7 +61,7 @@ If we need to match string with either string we use OR - vertical bar (|)
 ```Python
 # Check whether the sentence has other than Alphabets
 print(re.search(r'[^a-zA-Z]','This is a sentence with spaces.')) # O/P: <re.Match object; span=(4, 5), match=' '> # i.e O/P is First Space in the given sentence
-print(re.search(r'[^a-zA-Z ]','This is a sentence with spaces.')) # O/P: <re.Match object; span=(30, 31), match='.'> # i.e O/P is first dot in the given sentence bcz space is given inside square bracket
+print(re.search(r'[^a-zA-Z ]','This is a sentence with spaces.')) # O/P: <re.Match object; span=(30, 31), match='.'> # i.e O/P is the first dot in the given sentence bcz space is given inside the square bracket
 
 print(re.search(r'[dog|cat]','I like dogs.')) # O/P: <re.Match object; span=(7, 10), match='dog'>
 print(re.search(r'[dog|cat]','I like both cats and dogs.')) # O/P: <re.Match object; span=(12, 15), match='cat'>
@@ -70,7 +70,7 @@ print(re.findall(r'[dog|cat]','I like both cats and dogs')) # O/P: ['dog', 'cat'
 ```
 re.findall - finds all the given substrings
 #------------------------------------------------------------------------------------------
-How to match a certain character / Substring or string / sentence **Several Times**
+How to match a certain character / Substring or string/sentence **Several Times**
 Eg: We Need to find the longest word in the string / Find the hostnames in the log, 
 
 for that we use **Repeated Matches**  : ".*" dot followed by star rather than single dot
@@ -80,10 +80,10 @@ This means It matches any character **repeated as many times as possible includi
 ```Python
 import re
 print(re.search(r'Py.*n','Pygmalion')) # O/P: <re.Match object; span=(0,9), match='Pygmalion'>
-print(re.search(r'Py.*n','Python Programming')) # O/P: <re.Match object; span=(0,17), match='Python Programmin'> # It takes last 'n' in the given string, bcz Star takes many characters as possible
+print(re.search(r'Py.*n','Python Programming')) # O/P: <re.Match object; span=(0,17), match='Python Programmin'> # It takes the last 'n' in the given string, bcz Star takes as many characters as possible
 
 #This **Star** qualifier behaviour is called **GREEDY**
-# Program to check atleast 2 a is present either lower or upper case
+# Program to check at least 2 a is present either lower or upper case
 import re
 def repeating_letter_a(text):
   result = re.search(r"[Aa].*[Aa]", text)
@@ -97,9 +97,11 @@ print(repeating_letter_a("A is for apple")) # True
 print(re.search(r'Py[a-z]*n','Python Programming')) # O/P: <re.Match object; span=(0, 6), match='Python'> bcz it won't take other than small alphabets in between
 print(re.search(r'Py[a-z]*n','Pyn')) # O/P: <re.Match object; span=(0, 3), match='Pyn'> # Remember Unlike dot, star qualifier can have Zero characters too. 
 ```
-Other than dot (.), star (*), it can take Plus (+), Question mark (?) that help to create complex expressions like "egrep" command
-+ is for multiple times match, ? Zero match also taken into count
+Other than dot (.), and star (*), it can take Plus (+) and question mark (?) that help to create complex expressions like the "egrep" command
++ is for multiple times match,? Zero match also taken into count
 \ is for escape character (\. \* \+ \? \$ \^ inside search) Eg: re.search(r'\.com','mydomain.com')
+\w is wild search for one word {i.e. until space} ; \s for white space ; \d for digit
+
 ```Python
 import re
 # +
@@ -109,6 +111,28 @@ print(re.search(r'o+l+','boiling')) # None (bvcz its not concurrent)
 # ?
 print(re.search(r'p?each','each of us on our own')) # <re.Match object; span=(0,3), match='each'>
 print(re.search(r'p?each','I like peaches')) # <re.Match object; span=(7,12), match='peach'>
+# /w /d /s
+print(re.search(r'\w*','Just a Sentence')) # <re.Match object; span=(0, 4), match='Just'>
+
+print(re.search(r'\w*','123456789')) # <re.Match object; span=(0, 9), match='123456789'> This is also a word ahh
+
+print(re.search(r'\d','Just 1 Sentence')) # <re.Match object; span=(5, 6), match='1'>
+print(re.search(r'\d*','Just 1 Sentence')) # <re.Match object; span=(0, 0), match=''> ; d star, s star gives interesting o/p
+print(re.search(r'\s','Just a Sentence')) # <re.Match object; span=(4, 5), match=' '>
+
+print(re.search(r'\d*','Just a Sentence')) # <re.Match object; span=(0, 0), match=''>
 ```
 
+```Python
+# check if the text passed has at least 2 groups of alphanumeric characters (including letters, numbers, and underscores) separated by one or more whitespace characters.
+
+import re
+def check_character_groups(text):
+    result = re.search(r"\w\s", text)
+    return result != None
+
+print(check_character_groups("One")) # False
+print(check_character_groups("123  Ready Set GO")) # True
+print(check_character_groups("username user_01")) # True
+print(check_character_groups("shopping_list: milk, bread, eggs.")) # False
 ```
