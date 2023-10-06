@@ -136,3 +136,22 @@ print(check_character_groups("123  Ready Set GO")) # True
 print(check_character_groups("username user_01")) # True
 print(check_character_groups("shopping_list: milk, bread, eggs.")) # False
 ```
+match() versus search()
+The match() function only checks if the RE matches at the beginning of the string while search() will scan forward through the string for a match. It’s important to keep this distinction in mind. Remember, match() will only report a successful match which will start at 0; if the match wouldn’t start at zero, match() will not report it.
+
+```Python
+print(re.match('super', 'superstition').span()) # (0, 5)
+print(re.match('super', 'insuperable')) # None
+
+print(re.search('super', 'superstition').span()) # (0, 5)
+print(re.search('super', 'insuperable').span()) # (2, 7)
+
+s = '<html><head><title>Title</title>'
+len(s) # 32
+print(re.match('<.*>', s).span()) # (0, 32)
+print(re.match('<.*>', s).group()) # <html><head><title>Title</title>
+
+
+#  for example, a pattern starting with "Crow" must match starting with a 'C'. The analysis lets the engine quickly scan through the string looking for the starting character, only trying the full match if a 'C' is found.
+# Adding .* defeats this optimization, requiring scanning to the end of the string and then backtracking to find a match for the rest of the RE. Use re.search() instead.
+```
