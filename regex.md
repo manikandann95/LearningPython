@@ -2,6 +2,12 @@
 
 re module in python
 
+^                Start of line/string.
+[a-zA-Z]         Character is in a-z or A-Z.
+[a-zA-Z0-9.,$;]  Alphanumeric or `.` or `,` or `$` or `;`.
++                One or more of the previous token (change to * for zero or more).
+$                End of line/string.
+
 ```Python
 import re
 result = re.search(r'aza','plaza') # r indicates its a RawString
